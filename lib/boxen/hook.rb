@@ -38,3 +38,6 @@ end
 
 require "boxen/hook/github_issue"
 require "boxen/hook/web"
+require "boxen/hook/puppet_report"
+require "boxen/hook/facter_report"
+require "boxen/hook/foreman"
