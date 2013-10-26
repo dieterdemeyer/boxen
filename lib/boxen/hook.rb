@@ -8,7 +8,10 @@ module Boxen
     def self.all
       [
         Boxen::Hook::GitHubIssue,
-        Boxen::Hook::Web
+        Boxen::Hook::Web,
+        Boxen::Hook::PuppetReport,
+        Boxen::Hook::FacterReport,
+        Boxen::Hook::Foreman
       ]
     end
 

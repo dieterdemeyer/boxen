@@ -9,6 +9,12 @@ module Boxen
 
       private
       def call
+        puts "Calling hook FacterReport..."
+
+        FileUtils.mkdir_p "#{config.repodir}/log/facts"
+        fqdn = `facter fqdn | tr '[A-Z]' '[a-z]'`.strip
+        #File.open("#{config.repodir}/log/facts/#{fqdn}.yaml", 'w') { |file| file.write(`puppet facts find --render-as yaml #{fqdn}`) }
+        File.open("#{config.repodir}/log/facts/#{fqdn}.yaml", 'w') { |file| file.write(Puppet::Node::Facts.new("#{fqdn}", Facter.to_hash).to_yaml) }
       end
 
       def required_environment_variables
